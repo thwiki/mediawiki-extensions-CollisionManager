@@ -3,10 +3,9 @@
 namespace MediaWiki\Extension\CollisionManager;
 
 use MediaWiki\MediaWikiServices;
-use Parser;
-use Title;
-use Html;
-
+use MediaWiki\Parser\Parser;
+use MediaWiki\Title\Title;
+use MediaWiki\Html\Html;
 class ParserHooks implements \MediaWiki\Hook\ParserFirstCallInitHook
 {
 	/**

@@ -26,22 +26,31 @@
 	"APIPropModules": {
 		"pagedesc": {
 			"class": "MediaWiki\\Extension\\CollisionManager\\Apis\\ApiQueryPageDesc",
-			"services": ["CollisionManager.CollisionStore"]
+			"services": [
+				"CollisionManager.CollisionStore"
+			]
 		}
 	},
 	"SpecialPages": {
 		"Disambig": {
 			"class": "MediaWiki\\Extension\\CollisionManager\\Specials\\SpecialDisambig",
-			"services": ["CollisionManager.DisambigBuilder"]
+			"services": [
+				"CollisionManager.DisambigBuilder"
+			]
 		},
 		"CollisionManager": {
 			"class": "MediaWiki\\Extension\\CollisionManager\\Specials\\SpecialCollisionManager",
-			"services": ["CollisionManager.CollisionStore", "RedirectLookup"]
+			"services": [
+				"CollisionManager.CollisionStore",
+				"RedirectLookup"
+			]
 		},
 		"PagesWithSameName": "MediaWiki\\Extension\\CollisionManager\\Specials\\SpecialPagesWithSameName"
 	},
 	"MessagesDirs": {
-		"CollisionManager": ["i18n"]
+		"CollisionManager": [
+			"i18n"
+		]
 	},
 	"ExtensionMessagesFiles": {
 		"CollisionManagerMagic": "CollisionManager.i18n.magic.php",
@@ -70,7 +79,12 @@
 	"HookHandlers": {
 		"HookHandler": {
 			"class": "MediaWiki\\Extension\\CollisionManager\\Hooks",
-			"services": ["MainConfig", "CollisionManager.CollisionStore", "DisambiguatorLookup", "CollisionManager.DisambigBuilder"]
+			"services": [
+				"MainConfig",
+				"CollisionManager.CollisionStore",
+				"DisambiguatorLookup",
+				"CollisionManager.DisambigBuilder"
+			]
 		},
 		"ParserHookHandler": {
 			"class": "MediaWiki\\Extension\\CollisionManager\\ParserHooks"
@@ -79,6 +93,8 @@
 			"class": "MediaWiki\\Extension\\CollisionManager\\DatabaseHooks"
 		}
 	},
-	"ServiceWiringFiles": ["includes/ServiceWiring.php"],
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"manifest_version": 2
 }

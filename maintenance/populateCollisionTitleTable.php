@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\CollisionManager\Maintenance;
 
-use LoggedUpdateMaintenance;
+use MediaWiki\Maintenance\LoggedUpdateMaintenance;
 use MediaWiki\Extension\CollisionManager\CollisionRule;
 use MediaWiki\Extension\CollisionManager\CollisionStore;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Title\Title;
 
 $IP = getenv('MW_INSTALL_PATH');
 if ($IP === false) {

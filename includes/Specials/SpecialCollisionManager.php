@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\CollisionManager\Specials;
 
-use SpecialPage;
-use QueryPage;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\SpecialPage\QueryPage;
 use MediaWiki\Extension\CollisionManager\CollisionRule;
 use MediaWiki\Extension\CollisionManager\CollisionStore;
 use MediaWiki\Page\RedirectLookup;
-use Title;
-use Html;
-use Skin;
+use MediaWiki\Title\Title;
+use MediaWiki\Html\Html;
+use MediaWiki\Skin\Skin;
 use stdClass;
 
 class SpecialCollisionManager extends QueryPage
@@ -93,7 +93,7 @@ class SpecialCollisionManager extends QueryPage
 		$redirectOut = '';
 
 		if ($title->isRedirect()) {
-			$redirectTarget = Title::castFromPageIdentity($this->redirectLookup->getRedirectTarget($title));
+			$redirectTarget = Title::newFromLinkTarget($this->redirectLookup->getRedirectTarget($title));
 			if ($redirectTarget !== null) {
 				$from = Html::rawElement(
 					'em',
@@ -181,7 +181,7 @@ class SpecialCollisionManager extends QueryPage
 		$matchedRules = array_filter($matchedRules, function (CollisionRule $matchedRule) use ($ids): bool {
 			$title = $matchedRule->getTitle();
 			if ($title->isRedirect()) {
-				$redirectTarget = Title::castFromPageIdentity($this->redirectLookup->getRedirectTarget($title));
+				$redirectTarget = Title::newFromLinkTarget($this->redirectLookup->getRedirectTarget($title));
 				if ($redirectTarget === null || in_array($redirectTarget->getArticleID(), $ids)) {
 					return false;
 				}

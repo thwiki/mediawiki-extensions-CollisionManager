@@ -2,18 +2,18 @@
 
 namespace MediaWiki\Extension\CollisionManager;
 
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\Disambiguator\Lookup as DisambiguatorLookup;
-use ExtensionRegistry;
-use Title;
-use ImagePage;
-use OutputPage;
-use ParserOutput;
-use IContextSource;
-use LinksUpdate;
-use ManualLogEntry;
-use SpecialPage;
-use Html;
+use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\Title\Title;
+use MediaWiki\Page\ImagePage;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Context\IContextSource;
+use MediaWiki\Deferred\LinksUpdate\LinksUpdate;
+use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Html\Html;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
@@ -25,7 +25,6 @@ class Hooks implements
 	\MediaWiki\Hook\OutputPageParserOutputHook,
 	\MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook,
 	\MediaWiki\Hook\InfoActionHook,
-	\MediaWiki\Search\Hook\PrefixSearchBackendHook,
 	\MediaWiki\Search\Hook\SearchGetNearMatchHook,
 	\MediaWiki\Extension\CustomRedirect\Hooks\GetCustomRedirectHook
 {

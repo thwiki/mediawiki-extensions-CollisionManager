@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\CollisionManager;
 
 use MediaWiki\MediaWikiServices;
-use ExtensionRegistry;
+use MediaWiki\Registration\ExtensionRegistry;
 
 /**
  * CollisionManager wiring for MediaWiki services.

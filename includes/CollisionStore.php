@@ -3,14 +3,14 @@
 namespace MediaWiki\Extension\CollisionManager;
 
 use Wikimedia\Rdbms\ILoadBalancer;
-use Config;
-use WANObjectCache;
+use MediaWiki\Config\Config;
+use Wikimedia\ObjectCache\WANObjectCache;
 use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Extension\TextTransform\Normalizers\CachedTextNormalizer;
 use MediaWiki\Extension\Disambiguator\Lookup as DisambiguatorLookup;
-use Title;
-use Database;
-use DBConnRef;
+use MediaWiki\Title\Title;
+use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\DBConnRef;
 
 class CollisionStore
 {
@@ -114,7 +114,7 @@ class CollisionStore
 			$this->cache::TTL_DAY * 30, // Cache for 30 days
 			function ($oldValue, &$ttl, &$setOpts) use ($id, $method) {
 				$dbr = $this->loadBalancer->getConnection(DB_REPLICA);
-				$setOpts = Database::getCacheSetOptions($dbr);
+				$setOpts = \Wikimedia\Rdbms\Database::getCacheSetOptions($dbr);
 
 				$queryBuilder = $dbr->newSelectQueryBuilder();
 				$queryBuilder->select($this->selectFields())
@@ -209,7 +209,7 @@ class CollisionStore
 			$this->cache::TTL_DAY * 30,
 			function ($oldValue, &$ttl, &$setOpts) use ($namespace, $text, $method) {
 				$dbr = $this->loadBalancer->getConnection(DB_REPLICA);
-				$setOpts = Database::getCacheSetOptions($dbr);
+				$setOpts = \Wikimedia\Rdbms\Database::getCacheSetOptions($dbr);
 
 				$queryBuilder = $dbr->newSelectQueryBuilder();
 				$queryBuilder->select($this->selectFields())

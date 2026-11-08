@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\CollisionManager;
 
 use MediaWiki\MediaWikiServices;
 use stdClass;
-use Title;
-use TitleFormatter;
+use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFormatter;
 use Exception;
 
 class CollisionRule

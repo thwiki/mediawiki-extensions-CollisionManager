@@ -2,13 +2,12 @@
 
 namespace MediaWiki\Extension\CollisionManager\Specials;
 
-use IncludableSpecialPage;
+use MediaWiki\SpecialPage\IncludableSpecialPage;
 use MediaWiki\Extension\CollisionManager\DisambigBuilder;
-use Title;
-use FormOptions;
-use Xml;
-use Html;
-
+use MediaWiki\Title\Title;
+use MediaWiki\Html\FormOptions;
+use MediaWiki\Xml\Xml;
+use MediaWiki\Html\Html;
 class SpecialDisambig extends IncludableSpecialPage
 {
 	/** @var DisambigBuilder */
@@ -60,7 +59,7 @@ class SpecialDisambig extends IncludableSpecialPage
 
 		$text = $this->target->getPrefixedText();
 
-		$output->setPageTitle($this->msg('disambig-title', $text));
+		$output->setPageTitle( $this->msg( 'disambig-title', $text )->text() );
 		$output->addBacklinkSubtitle($this->target);
 
 		$output->addHTML($this->disambigBuilder->getDisambig($text, -1));
@@ -74,7 +73,7 @@ class SpecialDisambig extends IncludableSpecialPage
 		$target = $this->target ? $this->target->getPrefixedText() : '';
 
 		# Build up the form
-		$f = Xml::openElement('form', ['action' => wfScript()]);
+		$f = Html::openElement( 'form', [ 'action' => wfScript() ] );
 
 		# Values that should not be forgotten
 		$f .= Html::hidden('title', $this->getPageTitle()->getPrefixedText());
@@ -82,24 +81,22 @@ class SpecialDisambig extends IncludableSpecialPage
 			$f .= Html::hidden($name, $value);
 		}
 
-		$f .= Xml::fieldset($this->msg('disambig')->text());
+		$f .= Html::openElement( 'fieldset' ) . Html::element( 'legend', [], $this->msg( 'disambig' )->text() );
 
 		# Target input
-		$f .= Xml::inputLabel(
-			$this->msg('whatlinkshere-page')->text(),
-			'target',
-			'mw-disambig-target',
-			40,
-			$target
-		);
+		$f .= Html::label( $this->msg( 'whatlinkshere-page' )->text(), 'mw-disambig-target' ) . ' ';
+		$f .= Html::input( 'target', $target, 'text', [
+			'id' => 'mw-disambig-target',
+			'size' => 40,
+		] );
 
 		$f .= ' ';
 
 		# Submit
-		$f .= Xml::submitButton($this->msg('allpagessubmit')->text());
+		$f .= Html::submitButton( $this->msg( 'allpagessubmit' )->text() );
 
 		# Close
-		$f .= Html::closeElement('fieldset') . Xml::closeElement('form') . "\n";
+		$f .= Html::closeElement('fieldset') . Html::closeElement( 'form' ) . "\n";
 
 		return $f;
 	}

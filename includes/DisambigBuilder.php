@@ -2,14 +2,13 @@
 
 namespace MediaWiki\Extension\CollisionManager;
 
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Linker\LinkRenderer;
-use SpecialPage;
-use Title;
-use OutputPage;
-use ParserOutput;
-use Html;
-
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Title\Title;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\ParserOutput;
+use MediaWiki\Html\Html;
 class DisambigBuilder
 {
 	/** @var Config */

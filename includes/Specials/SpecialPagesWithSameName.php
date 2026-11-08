@@ -3,10 +3,9 @@
 namespace MediaWiki\Extension\CollisionManager\Specials;
 
 use MediaWiki\MediaWikiServices;
-use QueryPage;
-use Title;
-use Html;
-
+use MediaWiki\SpecialPage\QueryPage;
+use MediaWiki\Title\Title;
+use MediaWiki\Html\Html;
 class SpecialPagesWithSameName extends QueryPage
 {
 

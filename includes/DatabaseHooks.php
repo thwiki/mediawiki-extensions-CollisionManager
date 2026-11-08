@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\CollisionManager;
 
-use DatabaseUpdater;
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Extension\CollisionManager\Maintenance\PopulateCollisionTitleTable;
 
 class DatabaseHooks implements
