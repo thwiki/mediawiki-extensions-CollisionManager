@@ -74,7 +74,8 @@
 		"PrefixSearchBackend": "HookHandler",
 		"SearchGetNearMatch": "HookHandler",
 		"GetCustomRedirect": "HookHandler",
-		"LoadExtensionSchemaUpdates": "DatabaseHookHandler"
+		"LoadExtensionSchemaUpdates": "DatabaseHookHandler",
+		"SearchResultProvideDescription": "HookHandler"
 	},
 	"HookHandlers": {
 		"HookHandler": {

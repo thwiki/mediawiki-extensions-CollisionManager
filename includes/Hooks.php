@@ -112,6 +112,24 @@ class Hooks implements
 	}
 
 	/**
+	 * 为 REST 搜索结果补充词条描述（Citizen 命令面板走 /v1/search/title）。
+	 * 与 onApiOpenSearchSuggest 用同一套 collision_title 规则/分类回退逻辑。
+	 *
+	 * @param PageIdentity[] $pageIdentities
+	 * @param array $descriptions
+	 * @return void
+	 */
+	public function onSearchResultProvideDescription( array $pageIdentities, &$descriptions ) {
+		foreach ( $pageIdentities as $pageId => $pageIdentity ) {
+			$title = Title::newFromPageIdentity( $pageIdentity );
+			$description = $this->collisionStore->getPageDescription( $title );
+			if ( $description !== '' ) {
+				$descriptions[$pageId] = $description;
+			}
+		}
+	}
+
+	/**
 	 * {@inheritDoc}
 	 * @param OutputPage $outputPage
 	 * @param ParserOutput $parserOutput
